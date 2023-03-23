@@ -1,0 +1,34 @@
+<p>if you buy now, you save up the extra 10% discount</p>
+
+<br>
+<br>
+
+
+<table>
+  <div>
+    <h1>
+      Choose your best Price
+    </h1>
+    <br>
+    <h1>Id product: {{product?.id}}</h1>
+    <h2>Made BY: {{product?.brand}}</h2>
+    <h3>Type of Product: {{product?.category}}</h3>
+    <h4>Description: {{product?.description}}</h4>
+    <h5>Final Price: {{product?.discountPercentage}}</h5>
+  </div>
+</table>
+
+<p-button label="Buy Now" icon="pi pi-check"><i class="pi pi-shopping-bag" style="font-size: 2rem"></i></p-button>
+<br>
+
+<p-card header="***This Item get an EXTRA Deal***" subheader="plus 10% discount if you pay with Pay-Pal"
+  [style]="{width: '26rem  '}" styleClass="p-card-shadow">
+
+  <ng-template pTemplate="footer">
+    <p-button label="Buy with PPal and get extra 10% disc." icon="pi pi-check"><i class="pi pi-paypal"
+        style="font-size: 2rem"></i>
+    </p-button>
+    <p-button label="Leave Deals" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+    </p-button>
+  </ng-template>
+</p-card>

@@ -1,0 +1,77 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  border: 3px solid rgb(12, 31, 114);
+
+}
+
+  p{
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    color:rgb(255, 0, 60);
+    }
+  div{
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+      color:rgb(76, 0, 255);
+
+      }
+
+  .p-table{
+    width: 100%;
+    border: 3px solid rgb(12, 31, 114);
+    max-width: 100%;
+    table-layout: fixed;
+    overflow-x: auto;
+    border: collapse;
+
+    }
+
+  th {
+      margin-left: auto;
+      background-color: #d2e42d;
+      width: auto;
+      max-width: none;
+      white-space: nowrap;
+      overflow: hidden;
+      border: 1px solid #190ae4;
+      padding: 8px;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #e11d1d;
+      text-align: center;
+
+    }
+    table tr:nth-child(odd) {
+      background-color: #2a8be0;
+      text-align: center;
+
+    }
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+/* Stili per il pulsante "Buy Now" */
+.p-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.p-button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,33 @@
+<router-outlet></router-outlet>
+<p> Here's a collection of our best weekly deals </p>
+
+<div class="container">
+  <p-table [value]="products" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th style="width:5%">ID</th>
+        <th style="width:15%">Brand</th>
+        <th style="width:20%">Category</th>
+        <th style="width:37%">Description</th>
+        <th style="width:13%">Discount</th>
+        <th style="width:0%">GeT DeaL</th>
+        <th style="width:5%"></th>
+      </tr>
+      <tr *ngFor="let product of products; let i = index">
+
+        <td class="ellipsis">{{product.id}}</td>
+        <td class="ellipsis">{{product.brand}}</td>
+        <td>{{product.category}}</td>
+        <td class="ellipsis">{{product.description}}</td>
+        <td>{{product.discountPercentage}}</td>
+        <td><p-button (click)="goDetail(product)" label="Buy Now" (onClick)="handleClick()"></p-button></td>
+
+        <!--<td><button (click)="cancella(i)"><img src="../assets/pngegg.png">Delete</button></td>
+      <td><button (click)="goDetail(product)">Detail</button></td>-->
+      </tr>
+    </ng-template>
+
+  </p-table>
+
+
+  <!--<app-summary [summary]="products.length" (index)="cancella($event-1)"></app-summary>-->

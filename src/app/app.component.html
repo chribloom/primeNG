@@ -1,484 +1,75 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<p-toolbar>
 
-<style>
-  :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+  <div class="p-toolbar-group-start">
+    <p-button label="New Item To Cart" icon="pi pi-plus"></p-button>
+    <p-button label="Upload your idea" icon="pi pi-upload" styleClass="p-button-success"></p-button>
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
+    <i class="pi pi-bars"></i>
 
-  p {
-    margin: 0;
-  }
-
-  .spacer {
-    flex: 1;
-  }
-
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-  }
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 8px;
-  }
-
-  .toolbar #youtube-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo:hover,
-  .toolbar #youtube-logo:hover {
-    opacity: 0.8;
-  }
-
-  .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  svg.material-icons {
-    height: 24px;
-    width: auto;
-  }
-
-  svg.material-icons:not(:last-child) {
-    margin-right: 8px;
-  }
-
-  .card svg.material-icons path {
-    fill: #888;
-  }
-
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 16px;
-  }
-
-  .card {
-    all: unset;
-    border-radius: 4px;
-    border: 1px solid #eee;
-    background-color: #fafafa;
-    height: 40px;
-    width: 200px;
-    margin: 0 8px 16px;
-    padding: 16px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.2s ease-in-out;
-    line-height: 24px;
-  }
-
-  .card-container .card:not(:last-child) {
-    margin-right: 0;
-  }
-
-  .card.card-small {
-    height: 16px;
-    width: 168px;
-  }
-
-  .card-container .card:not(.highlight-card) {
-    cursor: pointer;
-  }
-
-  .card-container .card:not(.highlight-card):hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
-  }
-
-  .card-container .card:not(.highlight-card):hover .material-icons path {
-    fill: rgb(105, 103, 103);
-  }
-
-  .card.highlight-card {
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-    border: none;
-    width: auto;
-    min-width: 30%;
-    position: relative;
-  }
-
-  .card.card.highlight-card span {
-    margin-left: 60px;
-  }
-
-  svg#rocket {
-    width: 80px;
-    position: absolute;
-    left: -10px;
-    top: -24px;
-  }
-
-  svg#rocket-smoke {
-    height: calc(100vh - 95px);
-    position: absolute;
-    top: 10px;
-    right: 180px;
-    z-index: -10;
-  }
-
-  a,
-  a:visited,
-  a:hover {
-    color: #1976d2;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #125699;
-  }
-
-  .terminal {
-    position: relative;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 6px;
-    padding-top: 45px;
-    margin-top: 8px;
-    overflow: hidden;
-    background-color: rgb(15, 15, 16);
-  }
-
-  .terminal::before {
-    content: "\2022 \2022 \2022";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: rgb(58, 58, 58);
-    color: #c2c3c4;
-    width: 100%;
-    font-size: 2rem;
-    line-height: 0;
-    padding: 14px 0;
-    text-indent: 4px;
-  }
-
-  .terminal pre {
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-    color: white;
-    padding: 0 1rem 1rem;
-    margin: 0;
-  }
-
-  .circle-link {
-    height: 40px;
-    width: 40px;
-    border-radius: 40px;
-    margin: 8px;
-    background-color: white;
-    border: 1px solid #eeeeee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: 1s ease-out;
-  }
-
-  .circle-link:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
-  }
-
-  footer a {
-    display: flex;
-    align-items: center;
-  }
-
-  .github-star-badge {
-    color: #24292e;
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    padding: 3px 10px;
-    border: 1px solid rgba(27,31,35,.2);
-    border-radius: 3px;
-    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
-    margin-left: 4px;
-    font-weight: 600;
-  }
-
-  .github-star-badge:hover {
-    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
-    border-color: rgba(27,31,35,.35);
-    background-position: -.5em;
-  }
-
-  .github-star-badge .material-icons {
-    height: 16px;
-    width: 16px;
-    margin-right: 4px;
-  }
-
-  svg#clouds {
-    position: fixed;
-    bottom: -160px;
-    left: -230px;
-    z-index: -10;
-    width: 1920px;
-  }
-
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-    .card-container > *:not(.circle-link) ,
-    .terminal {
-      width: 100%;
-    }
-
-    .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
-    }
-
-    .card.highlight-card span {
-      margin-left: 72px;
-    }
-
-    svg#rocket-smoke {
-      right: 120px;
-      transform: rotate(-5deg);
-    }
-  }
-
-  @media screen and (max-width: 575px) {
-    svg#rocket-smoke {
-      display: none;
-      visibility: hidden;
-    }
-  }
-</style>
-
-<!-- Toolbar -->
-<div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-  />
-  <span>Welcome</span>
-    <div class="spacer"></div>
-    <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
-      <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
-        <rect width="400" height="400" fill="none"/>
-        <path d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" fill="#fff"/>
-      </svg>
-    </a>
-    <a aria-label="Angular on YouTube" target="_blank" rel="noopener" href="https://youtube.com/angular" title="YouTube">
-      <svg id="youtube-logo" height="24" width="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff">
-        <path d="M0 0h24v24H0V0z" fill="none"/>
-        <path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/>
-      </svg>
-    </a>
-</div>
-
-<div class="content" role="main">
-
-  <!-- Highlight Card -->
-  <div class="card highlight-card card-small">
-
-    <svg id="rocket" xmlns="http://www.w3.org/2000/svg" width="101.678" height="101.678" viewBox="0 0 101.678 101.678">
-      <title>Rocket Ship</title>
-      <g id="Group_83" data-name="Group 83" transform="translate(-141 -696)">
-        <circle id="Ellipse_8" data-name="Ellipse 8" cx="50.839" cy="50.839" r="50.839" transform="translate(141 696)" fill="#dd0031"/>
-        <g id="Group_47" data-name="Group 47" transform="translate(165.185 720.185)">
-          <path id="Path_33" data-name="Path 33" d="M3.4,42.615a3.084,3.084,0,0,0,3.553,3.553,21.419,21.419,0,0,0,12.215-6.107L9.511,30.4A21.419,21.419,0,0,0,3.4,42.615Z" transform="translate(0.371 3.363)" fill="#fff"/>
-          <path id="Path_34" data-name="Path 34" d="M53.3,3.221A3.09,3.09,0,0,0,50.081,0,48.227,48.227,0,0,0,18.322,13.437c-6-1.666-14.991-1.221-18.322,7.218A33.892,33.892,0,0,1,9.439,25.1l-.333.666a3.013,3.013,0,0,0,.555,3.553L23.985,43.641a2.9,2.9,0,0,0,3.553.555l.666-.333A33.892,33.892,0,0,1,32.647,53.3c8.55-3.664,8.884-12.326,7.218-18.322A48.227,48.227,0,0,0,53.3,3.221ZM34.424,9.772a6.439,6.439,0,1,1,9.106,9.106,6.368,6.368,0,0,1-9.106,0A6.467,6.467,0,0,1,34.424,9.772Z" transform="translate(0 0.005)" fill="#fff"/>
-        </g>
-      </g>
-    </svg>
-
-    <span>{{ title }} app is running!</span>
-
-    <svg id="rocket-smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
-      <title>Rocket Ship Smoke</title>
-      <path id="Path_40" data-name="Path 40" d="M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z" transform="translate(-147.025 -140.939)" fill="#f5f5f5"/>
-    </svg>
-
+    <p-splitButton label="Save" icon="pi pi-check" styleClass="p-button-warning"></p-splitButton>
   </div>
 
-  <!-- Resources -->
-  <h2>Resources</h2>
-  <p>Here are some links to help you get started:</p>
-
-  <div class="card-container">
-    <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-      <span>Learn Angular</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
-
-    <a class="card" target="_blank" rel="noopener" href="https://angular.io/cli">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
-      <span>CLI Documentation</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </a>
-
-    <a class="card" target="_blank" rel="noopener" href="https://material.angular.io">
-      <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px" width="21.813" height="23.453" viewBox="0 0 179.2 192.7"><path fill="#ffa726" d="M89.4 0 0 32l13.5 118.4 75.9 42.3 76-42.3L179.2 32 89.4 0z"/><path fill="#fb8c00" d="M89.4 0v192.7l76-42.3L179.2 32 89.4 0z"/><path fill="#ffe0b2" d="m102.9 146.3-63.3-30.5 36.3-22.4 63.7 30.6-36.7 22.3z"/><path fill="#fff3e0" d="M102.9 122.8 39.6 92.2l36.3-22.3 63.7 30.6-36.7 22.3z"/><path fill="#fff" d="M102.9 99.3 39.6 68.7l36.3-22.4 63.7 30.6-36.7 22.4z"/></svg>
-      <span>Angular Material</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </a>
-
-    <a class="card" target="_blank" rel="noopener" href="https://blog.angular.io/">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></svg>
-      <span>Angular Blog</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </a>
-
-    <a class="card" target="_blank" rel="noopener" href="https://angular.io/devtools/">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M14.73,13.31C15.52,12.24,16,10.93,16,9.5C16,5.91,13.09,3,9.5,3S3,5.91,3,9.5C3,13.09,5.91,16,9.5,16 c1.43,0,2.74-0.48,3.81-1.27L19.59,21L21,19.59L14.73,13.31z M9.5,14C7.01,14,5,11.99,5,9.5S7.01,5,9.5,5S14,7.01,14,9.5 S11.99,14,9.5,14z"/><polygon points="10.29,8.44 9.5,6 8.71,8.44 6.25,8.44 8.26,10.03 7.49,12.5 9.5,10.97 11.51,12.5 10.74,10.03 12.75,8.44"/></g></g></svg>
-      <span>Angular DevTools</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </a>
-
+  <div class="p-toolbar-group-end">
+    <p-button icon="pi pi-search"></p-button>
+    <p-calendar [(ngModel)]="value" dateFormat="dd.mm.yy" [minDate]="minDate"></p-calendar>
+    <p-button icon="pi pi-calendar" styleClass="p-button-success"></p-button>
+    <p-button icon="pi pi-times" styleClass="p-button-danger"></p-button>
   </div>
-
-  <!-- Next Steps -->
-  <h2>Next Steps</h2>
-  <p>What do you want to do next with your app?</p>
-
-  <input type="hidden" #selection>
-
-  <div class="card-container">
-    <button class="card card-small" (click)="selection.value = 'component'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>New Component</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'material'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Angular Material</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'pwa'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Add PWA Support</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'dependency'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Add Dependency</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'test'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Run and Watch Tests</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'build'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Build for Production</span>
-    </button>
-  </div>
-
-  <!-- Terminal -->
-  <div class="terminal" [ngSwitch]="selection.value">
-      <pre *ngSwitchDefault>ng generate component xyz</pre>
-      <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
-      <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
-      <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-      <pre *ngSwitchCase="'test'">ng test</pre>
-      <pre *ngSwitchCase="'build'">ng build</pre>
-  </div>
-
-  <!-- Links -->
-  <div class="card-container">
-    <a class="circle-link" title="Find a Local Meetup" href="https://www.meetup.com/find/?keywords=angular" target="_blank" rel="noopener">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24.607" height="23.447" viewBox="0 0 24.607 23.447">
-        <title>Meetup Logo</title>
-        <path id="logo--mSwarm" d="M21.221,14.95A4.393,4.393,0,0,1,17.6,19.281a4.452,4.452,0,0,1-.8.069c-.09,0-.125.035-.154.117a2.939,2.939,0,0,1-2.506,2.091,2.868,2.868,0,0,1-2.248-.624.168.168,0,0,0-.245-.005,3.926,3.926,0,0,1-2.589.741,4.015,4.015,0,0,1-3.7-3.347,2.7,2.7,0,0,1-.043-.38c0-.106-.042-.146-.143-.166a3.524,3.524,0,0,1-1.516-.69A3.623,3.623,0,0,1,2.23,14.557a3.66,3.66,0,0,1,1.077-3.085.138.138,0,0,0,.026-.2,3.348,3.348,0,0,1-.451-1.821,3.46,3.46,0,0,1,2.749-3.28.44.44,0,0,0,.355-.281,5.072,5.072,0,0,1,3.863-3,5.028,5.028,0,0,1,3.555.666.31.31,0,0,0,.271.03A4.5,4.5,0,0,1,18.3,4.7a4.4,4.4,0,0,1,1.334,2.751,3.658,3.658,0,0,1,.022.706.131.131,0,0,0,.1.157,2.432,2.432,0,0,1,1.574,1.645,2.464,2.464,0,0,1-.7,2.616c-.065.064-.051.1-.014.166A4.321,4.321,0,0,1,21.221,14.95ZM13.4,14.607a2.09,2.09,0,0,0,1.409,1.982,4.7,4.7,0,0,0,1.275.221,1.807,1.807,0,0,0,.9-.151.542.542,0,0,0,.321-.545.558.558,0,0,0-.359-.534,1.2,1.2,0,0,0-.254-.078c-.262-.047-.526-.086-.787-.138a.674.674,0,0,1-.617-.75,3.394,3.394,0,0,1,.218-1.109c.217-.658.509-1.286.79-1.918a15.609,15.609,0,0,0,.745-1.86,1.95,1.95,0,0,0,.06-1.073,1.286,1.286,0,0,0-1.051-1.033,1.977,1.977,0,0,0-1.521.2.339.339,0,0,1-.446-.042c-.1-.092-.2-.189-.307-.284a1.214,1.214,0,0,0-1.643-.061,7.563,7.563,0,0,1-.614.512A.588.588,0,0,1,10.883,8c-.215-.115-.437-.215-.659-.316a2.153,2.153,0,0,0-.695-.248A2.091,2.091,0,0,0,7.541,8.562a9.915,9.915,0,0,0-.405.986c-.559,1.545-1.015,3.123-1.487,4.7a1.528,1.528,0,0,0,.634,1.777,1.755,1.755,0,0,0,1.5.211,1.35,1.35,0,0,0,.824-.858c.543-1.281,1.032-2.584,1.55-3.875.142-.355.28-.712.432-1.064a.548.548,0,0,1,.851-.24.622.622,0,0,1,.185.539,2.161,2.161,0,0,1-.181.621c-.337.852-.68,1.7-1.018,2.552a2.564,2.564,0,0,0-.173.528.624.624,0,0,0,.333.71,1.073,1.073,0,0,0,.814.034,1.22,1.22,0,0,0,.657-.655q.758-1.488,1.511-2.978.35-.687.709-1.37a1.073,1.073,0,0,1,.357-.434.43.43,0,0,1,.463-.016.373.373,0,0,1,.153.387.7.7,0,0,1-.057.236c-.065.157-.127.316-.2.469-.42.883-.846,1.763-1.262,2.648A2.463,2.463,0,0,0,13.4,14.607Zm5.888,6.508a1.09,1.09,0,0,0-2.179.006,1.09,1.09,0,0,0,2.179-.006ZM1.028,12.139a1.038,1.038,0,1,0,.01-2.075,1.038,1.038,0,0,0-.01,2.075ZM13.782.528a1.027,1.027,0,1,0-.011,2.055A1.027,1.027,0,0,0,13.782.528ZM22.21,6.95a.882.882,0,0,0-1.763.011A.882.882,0,0,0,22.21,6.95ZM4.153,4.439a.785.785,0,1,0,.787-.78A.766.766,0,0,0,4.153,4.439Zm8.221,18.22a.676.676,0,1,0-.677.666A.671.671,0,0,0,12.374,22.658ZM22.872,12.2a.674.674,0,0,0-.665.665.656.656,0,0,0,.655.643.634.634,0,0,0,.655-.644A.654.654,0,0,0,22.872,12.2ZM7.171-.123A.546.546,0,0,0,6.613.43a.553.553,0,1,0,1.106,0A.539.539,0,0,0,7.171-.123ZM24.119,9.234a.507.507,0,0,0-.493.488.494.494,0,0,0,.494.494.48.48,0,0,0,.487-.483A.491.491,0,0,0,24.119,9.234Zm-19.454,9.7a.5.5,0,0,0-.488-.488.491.491,0,0,0-.487.5.483.483,0,0,0,.491.479A.49.49,0,0,0,4.665,18.936Z" transform="translate(0 0.123)" fill="#f64060"/>
-      </svg>
-    </a>
-
-    <a class="circle-link" title="Join the Conversation on Discord" href="https://discord.gg/angular" target="_blank" rel="noopener">
-      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 245 240">
-        <title>Discord Logo</title>
-        <path d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zM140.9 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"/>
-        <path d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
-      </svg>
-    </a>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-      Love Angular?&nbsp;
-      <a href="https://github.com/angular/angular" target="_blank" rel="noopener"> Give our repo a star.
-        <div class="github-star-badge">
-            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          Star
-        </div>
-      </a>
-      <a href="https://github.com/angular/angular" target="_blank" rel="noopener">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-      </a>
-  </footer>
-
-  <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
-    <title>Gray Clouds Background</title>
-    <path id="Path_39" data-name="Path 39" d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z" transform="translate(142.69 -634.312)" fill="#eee"/>
-  </svg>
-
-</div>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+</p-toolbar>
+<br>
+<br>
+<span class="p-float-label p-input-filled">
+  <input id="in_title" type="text" [(ngModel)]="title" pInputText>
+  <label for="in_title">Enter your Name</label>
+</span>
+<p-password [(ngModel)]="value4">
+  <!--<ng-template pTemplate="header">
+    <h6>Pick a password</h6>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <p class="mt-2">Suggestions</p>
+    <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+      <li>At least one lowercase</li>
+      <li>At least one uppercase</li>
+      <li>At least one numeric</li>
+      <li>Minimum 8 characters</li>
+    </ul>
+  </ng-template>-->
+</p-password>
+<br>
+<p-button type="button" label="Go Cart" (click)="upper()" icon="pi pi-shopping-bag"></p-button>
+<p>{{title}}</p>
 
 <router-outlet></router-outlet>
+
+
+<p-card header>
+
+  <br>
+
+  Welcome on the BEST DEALS page
+  <p-card subheader="Check out our fidelity-card program, subscribe and HAVE A GOOD DEAL "></p-card>
+
+
+</p-card>
+<p-card header="Simple Card/ Fidelity Card" [style]="{'width': '26rem', 'margin-bottom': '2em'}">
+  <ng-template pTemplate="header">
+    <img alt="Card"
+      src="data:image/jpeg;base64,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">
+  </ng-template>
+  <p>Subscribe for free today</p>
+</p-card>
+
+<p-card header="Advanced/Gift Card" subheader="GeT A GifT 2 youR BEstie" [style]="{width: '26rem  '}"
+  styleClass="p-card-shadow">
+  <ng-template pTemplate="header">
+    <img alt="Card"
+      src="https://img1.spiiky.com/events/F/78877_6fdc3fc212654220b239997a83c624c1.png?format=jpg&quality=95&scale=both&width=800&maxheight=466&crop=(24,12,890,516)">
+  </ng-template>
+  <p>EDDDAAJEEE!</p>
+  <ng-template pTemplate="footer">
+    <p-button label="Subscribe" icon="pi pi-check"></p-button>
+    <p-button label="Leave Deals" icon="pi pi-times" styleClass="p-button-secondary"
+      [style]="{'margin-left': '.5em'}"></p-button>
+  </ng-template>
+</p-card>
